@@ -5,3 +5,6 @@ dependencies:
     - pandas
     - appmode
     - ipywidgets
+    - matplotlib
+    - rasterio
+    - pyproj
