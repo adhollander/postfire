@@ -1,0 +1,18 @@
+Species,PreferredAspect,FunctionalGroup,PreferredTopography,GrowthRateScore,RecruitmentScore,FireCountThreshold,FRITooFrequent,FireSeverityLowMod,FireSeverityHigh,Drought1stYr,Drought2ndYr,NonNatives
+Arctostaphylos glauca,variety,seeder,not steep,35,35,1,-80,80,80,50,20,50
+Acmispon glaber,variety,seeder,not steep,80,50,3,-80,80,50,80,20,50
+Ceanothus vestitus,N,seeder,not steep,80,50,1,-80,50,80,80,20,20
+Ceanothus cuneatus,variety,seeder,not steep,75,50,1,-80,50,80,80,20,50
+Ceanothus crassifolius,S,seeder,not steep,20,50,5,-80,50,80,50,20,50
+Adenostoma fasciculatum,S,facultative seeder,not steep,20,50,2,-80,75,35,75,20,80
+Salvia mellifera,variety,facultative seeder,not steep,50,50,2,-50,80,50,50,20,75
+Eriodictyon crassifolium,S,facultative seeder,not steep,75,50,2,-50,75,20,80,20,80
+Eriogonum fasciculatum,S  ,facultative seeder,not steep,50,35,2,-75,75,50,80,20,35
+Artemisia californica,N,facultative seeder,steep slopes ,80,35,1,-80,50,20,75,20,35
+Ceanothus leucodermis,S,facultative seeder,steep slopes,80,50,2,-80,75,80,20,20,20
+Malacothamnus fasciculatus,variety,facultative seeder,steep slopes,80,50,2,-80,80,50,80,20,50
+Cercocarpus betuloides,variety,sprouter,steep slopes,75,20,1,-50,80,80,50,20,80
+Quercus berberidifolia,N,sprouter,steep slopes,20,50,1,-50,80,80,80,35,80
+Hesperoyucca whipplei ,S,sprouter,not steep,50,50,2,-50,80,80,80,35,80
+Prunus ilicifolia,N,sprouter,steep slopes,75,50,1,-50,80,80,50,35,80
+Rhamnus ilicifolia,variety,sprouter,not steep,20,50,2,-50,50,50,50,35,80
