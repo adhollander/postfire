@@ -11775,7 +11775,9 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Postfire-Restoration-Tool">Postfire Restoration Tool<a class="anchor-link" href="#Postfire-Restoration-Tool">&#182;</a></h2>
+<h2 id="Postfire-Restoration-Tool">Postfire Restoration Tool<a class="anchor-link" href="#Postfire-Restoration-Tool">&#182;</a></h2><p>We are developing this tool using a Jupyter notebook framework. Jupyter has become an extremely important platform for creating reproducible and interactive workflows for scientific computations, and is a good fit for our project since we are in the continual process of refining our model of postfire restoration. The Python backend will allow for integration with a variety of platforms.</p>
+<p>Our logic at present is to develop a potential regeneration score that applies across a species community, after computing scores for each species singly.</p>
+
 </div>
 </div>
 </div>
@@ -11791,13 +11793,14 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Read-in-species-table">Read in species table<a class="anchor-link" href="#Read-in-species-table">&#182;</a></h4>
+<h4 id="Read-in-species-table">Read in species table<a class="anchor-link" href="#Read-in-species-table">&#182;</a></h4><p>The first step is to read in a table of the species-by-species trait characteristics.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -11828,7 +11831,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">traits1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;./datasets/SpeciesTableSummary1.csv&quot;</span><span class="p">)</span>
@@ -11845,7 +11848,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[3]:</div>
+<div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -12207,7 +12210,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">coverbreaks</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="mi">15</span><span class="p">,</span> <span class="o">.</span><span class="mi">45</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">]</span>
@@ -12229,10 +12232,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">species1</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Adenostoma fasciculatum&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Ceanothus cuneatus&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Salvia mellifera&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">specieslist1</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Adenostoma fasciculatum&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Ceanothus cuneatus&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Salvia mellifera&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
 </pre></div>
 
 </div>
@@ -12244,25 +12247,29 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Determine-a-potential-regeneration-score-for-a-single-species">Determine a potential regeneration score for a single species<a class="anchor-link" href="#Determine-a-potential-regeneration-score-for-a-single-species">&#182;</a></h3>
+<h3 id="Determine-a-potential-regeneration-score-for-a-single-species-based-on-environmental-conditions">Determine a potential regeneration score for a single species based on environmental conditions<a class="anchor-link" href="#Determine-a-potential-regeneration-score-for-a-single-species-based-on-environmental-conditions">&#182;</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Species Step 1 weighting</span>
 <span class="c1"># take species name, the aspect of the terrain, whether steep or not, and number of fires,</span>
-<span class="c1"># and output a score for potential regeneration. (ignoring functional group for now)</span>
+<span class="c1"># and output a score for potential regeneration. </span>
 <span class="k">def</span> <span class="nf">speciesstep1</span><span class="p">(</span><span class="n">specname</span><span class="p">,</span> <span class="n">aspect</span><span class="p">,</span> <span class="n">topography</span><span class="p">,</span> <span class="n">firecount</span><span class="p">):</span>
     <span class="n">specrow</span> <span class="o">=</span> <span class="n">traits1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">traits1</span><span class="p">[</span><span class="s1">&#39;Species&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">specname</span><span class="p">]</span>
     <span class="n">prefaspect</span> <span class="o">=</span> <span class="n">specrow</span><span class="p">[</span><span class="s1">&#39;PreferredAspect&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">preftopo</span> <span class="o">=</span> <span class="n">specrow</span><span class="p">[</span><span class="s1">&#39;PreferredTopography&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">maxfire</span> <span class="o">=</span> <span class="n">specrow</span><span class="p">[</span><span class="s1">&#39;FireCountThreshold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># let&#39;s start our scoring at a middle value</span>
-    <span class="n">startval</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">functionalgroup</span> <span class="o">=</span> <span class="n">specrow</span><span class="p">[</span><span class="s1">&#39;FunctionalGroup&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="c1"># let&#39;s start our scoring based on the functional group of the species</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">functionalgroup</span> <span class="o">==</span> <span class="s1">&#39;sprouters&#39;</span><span class="p">):</span>
+        <span class="n">startval</span> <span class="o">=</span> <span class="mi">80</span>
+    <span class="k">else</span><span class="p">:</span> <span class="c1"># it&#39;s a seeder or facultative seeder</span>
+        <span class="n">startval</span> <span class="o">=</span> <span class="mi">50</span>
     <span class="k">if</span><span class="p">(</span><span class="n">prefaspect</span> <span class="o">==</span> <span class="n">aspect</span><span class="p">):</span>
         <span class="n">startval</span> <span class="o">+=</span> <span class="mi">20</span>
     <span class="k">if</span><span class="p">(</span><span class="n">preftopo</span> <span class="o">==</span> <span class="n">topography</span><span class="p">):</span>
@@ -12283,16 +12290,19 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="A-couple-of-example-queries">A couple of example queries<a class="anchor-link" href="#A-couple-of-example-queries">&#182;</a></h4>
+<h4 id="A-couple-of-example-queries">A couple of example queries<a class="anchor-link" href="#A-couple-of-example-queries">&#182;</a></h4><p>Here we are looking at the potential regeneration for a single species under a particular aspect, slope, and number of previous fires. The idea is that this query will be made on a pixel-by-pixel basis.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">speciesstep1</span><span class="p">(</span><span class="s1">&#39;Adenostoma fasciculatum&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;steep slopes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># What is the potential regeneration for Adenostema fasciculatum on north-facing steep slopes with only 1 fire in</span>
+<span class="c1"># the past 40 years?</span>
+<span class="n">speciesstep1</span><span class="p">(</span><span class="s1">&#39;Adenostoma fasciculatum&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;steep slopes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> 
 </pre></div>
 
 </div>
@@ -12305,7 +12315,7 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[7]:</div>
+<div class="prompt output_prompt">Out[13]:</div>
 
 
 
@@ -12322,10 +12332,12 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">speciesstep1</span><span class="p">(</span><span class="s1">&#39;Ceanothus vestitus&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;not steep&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># What is the potential regeneration for Prunus ilicifolia on not-so-steep south-facing slopes with 3 fires in</span>
+<span class="c1"># the past 40 years?</span>
+<span class="n">speciesstep1</span><span class="p">(</span><span class="s1">&#39;Prunus ilicifolia&#39;</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;not steep&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12338,13 +12350,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[8]:</div>
+<div class="prompt output_prompt">Out[15]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>30</pre>
+<pre>10</pre>
 </div>
 
 </div>
@@ -12357,22 +12369,54 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Combine-the-scores-from-each-species-using-a-weighted-average-in-the-species-groups">Combine the scores from each species using a weighted average in the species groups<a class="anchor-link" href="#Combine-the-scores-from-each-species-using-a-weighted-average-in-the-species-groups">&#182;</a></h3>
+<h3 id="Determine-a-potential-regeneration-score-for-a-single-species-based-on-inherent-species-traits">Determine a potential regeneration score for a single species based on inherent species traits<a class="anchor-link" href="#Determine-a-potential-regeneration-score-for-a-single-species-based-on-inherent-species-traits">&#182;</a></h3><p>We combine the attributes of growth rate and recruitment rate here.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Species Step 1 weighting by growth and recruitment rate</span>
+
+<span class="k">def</span> <span class="nf">speciessteptraits1</span><span class="p">(</span><span class="n">specname</span><span class="p">):</span>
+    <span class="n">specrow</span> <span class="o">=</span> <span class="n">traits1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">traits1</span><span class="p">[</span><span class="s1">&#39;Species&#39;</span><span class="p">]</span><span class="o">==</span><span class="n">specname</span><span class="p">]</span>
+    <span class="n">growthrate</span> <span class="o">=</span> <span class="n">specrow</span><span class="p">[</span><span class="s1">&#39;GrowthRateScore&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">recruit</span> <span class="o">=</span> <span class="n">specrow</span><span class="p">[</span><span class="s1">&#39;RecruitmentScore&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">startval</span> <span class="o">=</span> <span class="p">(</span><span class="n">growthrate</span> <span class="o">+</span> <span class="n">recruit</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    
+    <span class="k">return</span> <span class="n">startval</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Combine-the-scores-from-each-species-using-a-weighted-average-in-the-species-groups">Combine the scores from each species using a weighted average in the species groups<a class="anchor-link" href="#Combine-the-scores-from-each-species-using-a-weighted-average-in-the-species-groups">&#182;</a></h3><p>I am averaging the score from the growth and recruitment rate together with the score from the environmental conditions.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">specgroupstep1</span><span class="p">(</span><span class="n">specgroup</span><span class="p">,</span> <span class="n">aspect</span><span class="p">,</span> <span class="n">topography</span><span class="p">,</span> <span class="n">firecount</span><span class="p">):</span>
     <span class="n">numspecies</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">specgroup</span><span class="p">)</span>
     <span class="n">speclist</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">specgroup</span><span class="p">]</span>
     <span class="n">speclistscore</span> <span class="o">=</span> <span class="p">[</span><span class="n">speciesstep1</span><span class="p">(</span><span class="n">spec</span><span class="p">,</span> <span class="n">aspect</span><span class="p">,</span> <span class="n">topography</span><span class="p">,</span> <span class="n">firecount</span><span class="p">)</span> <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">speclist</span><span class="p">]</span>
+    <span class="n">speclisttrait</span> <span class="o">=</span> <span class="p">[</span><span class="n">speciessteptraits1</span><span class="p">(</span><span class="n">spec</span><span class="p">)</span> <span class="k">for</span> <span class="n">spec</span> <span class="ow">in</span> <span class="n">speclist</span><span class="p">]</span>
     <span class="n">coverlevels</span> <span class="o">=</span> <span class="p">[</span><span class="n">coverbreaks</span><span class="p">[</span><span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">specgroup</span><span class="p">]</span>
     <span class="c1">#speclistscore = [speciesstep1(speclist[0], aspect, topography, firecount)]</span>
-    <span class="n">covercross</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">:</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">,</span><span class="n">speclistscore</span><span class="p">,</span><span class="n">coverlevels</span><span class="p">)</span>
+    <span class="n">covercross</span> <span class="o">=</span> <span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">z</span><span class="p">:</span><span class="n">y</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="n">speclistscore</span><span class="p">,</span><span class="n">coverlevels</span><span class="p">,</span> <span class="n">speclisttrait</span><span class="p">)</span>
     <span class="c1">#specgroupscore = sum(covercross)/numspecies </span>
     <span class="n">specgroupscore</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">covercross</span><span class="p">)</span> <span class="c1"># maybe we shouldn&#39;t divide here</span>
     <span class="k">return</span> <span class="n">specgroupscore</span>
@@ -12387,7 +12431,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="A-couple-of-example-conditions-with-this-species-list.">A couple of example conditions with this species list.<a class="anchor-link" href="#A-couple-of-example-conditions-with-this-species-list.">&#182;</a></h4><table>
+<h4 id="A-couple-of-example-conditions-with-this-species-list.-(specieslist1)">A couple of example conditions with this species list. (specieslist1)<a class="anchor-link" href="#A-couple-of-example-conditions-with-this-species-list.-(specieslist1)">&#182;</a></h4><table>
 <thead><tr>
 <th>Species</th>
 <th>Cover percentage</th>
@@ -12415,10 +12459,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">specgroupstep1</span><span class="p">(</span><span class="n">species1</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;not steep&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">specgroupstep1</span><span class="p">(</span><span class="n">specieslist1</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;not steep&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12431,13 +12475,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[27]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>49.0</pre>
+<pre>46.9375</pre>
 </div>
 
 </div>
@@ -12457,10 +12501,10 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">specgroupstep1</span><span class="p">(</span><span class="n">species1</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;steep slopes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">specgroupstep1</span><span class="p">(</span><span class="n">specieslist1</span><span class="p">,</span> <span class="s1">&#39;S&#39;</span><span class="p">,</span> <span class="s1">&#39;steep slopes&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12473,13 +12517,13 @@ div#notebook {
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[30]:</div>
+<div class="prompt output_prompt">Out[21]:</div>
 
 
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>65.0</pre>
+<pre>54.9375</pre>
 </div>
 
 </div>
@@ -12801,6 +12845,33 @@ div#notebook {
 
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We now want a function to wrap the values in the rasters (which are integer, integer, and float) and return the species group score. This should be robust to all the values in the rasters, including what it uses as NAs.</p>
+<p>This depends on the raster: for firecount and nsgeomorphon, it's 255.0, for slope it's nan.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[50]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">rastervalStep1</span><span class="p">(</span><span class="n">nsgeomorphon</span><span class="p">,</span> <span class="n">firecount</span><span class="p">,</span> <span class="n">slope</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">((</span><span class="n">nsgeomorphon</span> <span class="o">==</span> <span class="mi">255</span> <span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="n">firecount</span> <span class="o">==</span> <span class="mi">255</span><span class="p">)</span> <span class="ow">or</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    
+</pre></div>
+
+</div>
 </div>
 </div>
 
