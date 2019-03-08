@@ -1,0 +1,34 @@
+<PAMDataset>
+  <PAMRasterBand band="1">
+    <Description>nsgeomorphon@socalNF</Description>
+    <Histograms>
+      <HistItem>
+        <HistMin>1.99609375</HistMin>
+        <HistMax>12.00390625</HistMax>
+        <BucketCount>256</BucketCount>
+        <IncludeOutOfRange>1</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>2243|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|15078|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|125|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|16158|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1917|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|25046|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|423807</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="COLOR_TABLE_RULE_RGB_0">1.000000e+00 1.000000e+00 171 227 191 171 227 191</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_10">1.100000e+01 1.100000e+01 165 0 75 165 0 75</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_11">1.200000e+01 1.200000e+01 95 147 20 95 147 20</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_1">2.000000e+00 2.000000e+00 157 5 74 157 5 74</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_2">3.000000e+00 3.000000e+00 69 207 110 69 207 110</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_3">4.000000e+00 4.000000e+00 176 186 232 176 186 232</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_4">5.000000e+00 5.000000e+00 62 90 76 62 90 76</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_5">6.000000e+00 6.000000e+00 168 11 193 168 11 193</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_6">7.000000e+00 7.000000e+00 227 62 108 227 62 108</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_7">8.000000e+00 8.000000e+00 42 180 111 42 180 111</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_8">9.000000e+00 9.000000e+00 216 227 243 216 227 243</MDI>
+      <MDI key="COLOR_TABLE_RULE_RGB_9">1.000000e+01 1.000000e+01 95 172 27 95 172 27</MDI>
+      <MDI key="COLOR_TABLE_RULES_COUNT">12</MDI>
+      <MDI key="STATISTICS_MAXIMUM">12</MDI>
+      <MDI key="STATISTICS_MEAN">9.479475308642</MDI>
+      <MDI key="STATISTICS_MINIMUM">2</MDI>
+      <MDI key="STATISTICS_STDDEV">3.2514068706145</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>
