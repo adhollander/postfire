@@ -9,3 +9,5 @@ dependencies:
     - rasterio
     - pyproj
     - pyshp
+    - xarray
+    - gdal
