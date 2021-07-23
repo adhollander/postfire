@@ -27,3 +27,4 @@ To install the tool, download the [PRePTool.zip](https://github.com/adhollander/
 the instructions in the [installation guide](https://github.com/adhollander/postfire/raw/master/Postfire_Restoration_Prioritization_Tool_Installation_Instructions.pdf). 
 The [technical guide](https://github.com/adhollander/postfire/raw/master/Postfire_Restoration_Priorization_Tool_Technical_Guide.pdf) 
 provides instructions on running the tool and substantial details on its background and concepts.
+There is also a slide presentation illustrating use of the tool in a [case study of the Copper Fire](https://github.com/adhollander/postfire/raw/master/PReP_Tool_Copper_Fire_Case_Study.pdf).
